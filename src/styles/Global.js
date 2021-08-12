@@ -12,13 +12,13 @@ const Global = createGlobalStyle`
          @media screen and (min-width: 500px) and (max-width:600px) {
             font-size: ${SIZES[1]}px;
          }
-        @media screen and (min-width: 601px) and (max-width: 900) {
+        @media screen and (min-width: 600px) and (max-width: 900px) {
             font-size: ${SIZES[2]}px;
          }
-        @media screen and (min-width:901px) and (max-width: 1300px) {
+        @media screen and (min-width:900px) and (max-width: 1300px) {
             font-size: ${SIZES[3]}px;
          }
-        @media screen and (min-width:1301px) {
+        @media screen and (min-width:1300px) {
             font-size: ${SIZES[4]}px;
          }
     }

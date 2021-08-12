@@ -1,0 +1,11 @@
+
+Does canvasRef.current.getContext() need to be stored in a ref or state? Re-rendering may cause the object to be re-created?
+
+canvas.width
+
+nativeEvent.clientX vs event.clientX?
+
+try the box thing
+- 3 boxes inside with txt
+- click will open alert with given txt
+- 
