@@ -3,7 +3,7 @@ import FixedRight from "../styles/FixedRight";
 import styled from "styled-components";
 
 const Text = styled.p`
-  padding: 15px;
+  padding: 0 10px;
   cursor: pointer;
   ::after {
     content: " 🗑️";

@@ -26,7 +26,7 @@ const Global = createGlobalStyle`
         background: #edf2ff;
         font-family: Arial, Helvetica, sans-serif;
         text-align: center;
-        margin:10px
+        margin:10px 0;
     }
 `;
 

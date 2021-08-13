@@ -55,7 +55,7 @@ const Canvas = ({ canvasRef }) => {
     context.strokeStyle = "white";
     context.lineWidth = 2;
     contextRef.current = context;
-  }, [open]);
+  }, [open, contextRef, canvasRef]);
 
   //when the resize event is fired, at that point, contextRef is already initialized
   //although useResize's useEffect runs first

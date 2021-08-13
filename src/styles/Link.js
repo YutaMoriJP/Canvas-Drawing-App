@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Link = styled.a`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: black;
   font-weight: 900;
   padding: 20px;
