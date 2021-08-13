@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const FixedRight = styled.article`
   position: absolute;
-  top: 0;
+  top: 1rem;
   right: 0;
 `;
 
