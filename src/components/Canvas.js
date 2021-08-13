@@ -1,34 +1,20 @@
 import React, { useRef, useEffect, useState } from "react";
 import CanvasStyled from "../styles/Canvas";
+import useResize from "../useHooks/useResize";
+import ClearCanvas from "../components/ClearCanvas";
+import useOpen from "../useHooks/useOpen";
 
-const useResize = () => {
-  const [resized, setResized] = useState(false);
-  useEffect(() => {
-    const onresize = () => {
-      setResized(previousResize => !previousResize);
-    };
-    window.addEventListener("resize", onresize);
-    return () => {
-      window.removeEventListener("resize", onresize);
-    };
-  }, []);
-  return resized;
-};
+const Canvas = ({ canvasRef }) => {
+  //state for re-setting canvas
+  const [open, toggle] = useOpen(false);
 
-const Canvas = () => {
-  //state
+  //state - onMouseDown = true & onMouseDown = false
   const [isDrawing, setIsDrawing] = useState(false);
   //refs
-  const canvasRef = useRef(null);
   const contextRef = useRef(null);
-
-  //const resized = useResize();
 
   //event handlers
   const handleMouseMove = event => {
-    console.log("event.offsetX", event.offsetX);
-    console.log("event.offsetY", event.offsetY);
-    console.log("event.nativeEvent.offsetX", event.nativeEvent.offsetX);
     //check if user is drawing or not
     //checking for false makes the code cleaner and reduces the nesting, if there are multiple if(){if(){if()}}...
     if (!isDrawing) return;
@@ -58,9 +44,7 @@ const Canvas = () => {
 
   //initialize canvas API after component has mounted
   useEffect(() => {
-    if (contextRef && contextRef.current) {
-      return;
-    }
+    console.log("%cCanvas useEffect", "color:red");
     canvasRef.current.width = window.innerWidth * 2;
     canvasRef.current.height = window.innerHeight * 2;
     canvasRef.current.style.width = "100%";
@@ -71,15 +55,23 @@ const Canvas = () => {
     context.strokeStyle = "white";
     context.lineWidth = 2;
     contextRef.current = context;
-  }, []);
+  }, [open]);
 
+  //when the resize event is fired, at that point, contextRef is already initialized
+  //although useResize's useEffect runs first
+  //so the call order in this case does not matter
+  //but to have a clearn mental model, call it after the useEffect above
+  useResize(canvasRef, contextRef);
   return (
-    <CanvasStyled
-      ref={canvasRef}
-      onMouseMove={handleMouseMove}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-    ></CanvasStyled>
+    <>
+      <ClearCanvas toggle={toggle} />
+      <CanvasStyled
+        ref={canvasRef}
+        onMouseMove={handleMouseMove}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+      ></CanvasStyled>
+    </>
   );
 };
 
