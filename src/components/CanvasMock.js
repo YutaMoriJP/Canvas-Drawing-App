@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import CanvasStyled from "../styles/Canvas";
+
 const draw = (x, y, ctx) => {
   //ctx.arc(x, y, 10, 0, Math.PI * 2);
   ctx.lineTo(x, y);
