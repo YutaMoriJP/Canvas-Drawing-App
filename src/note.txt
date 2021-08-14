@@ -5,8 +5,5 @@ canvas.width
 
 nativeEvent.clientX vs event.clientX?
 
-try the box thing
-- 3 boxes inside with txt
-- click will open alert with given txt
-- 
 add download feature and add storage option?
+- storage option - onMouseUp - toggle stored option (this is when useLocalStorage should be called, so the deps value)
