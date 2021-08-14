@@ -10,14 +10,17 @@ const Link = styled.a`
   text-decoration: underline;
   text-decoration-color: transparent;
   text-decoration-thickness: 3px;
-  transition: 1s;
+  transition: color 2s ease-in-out;
   :hover {
     text-decoration-color: seagreen;
   }
   ${props =>
     props.ready &&
     css`
-      color: seagreen;
+      color: #087f5b;
+      ::after {
+        content: " 🎨";
+      }
     `}
 `;
 

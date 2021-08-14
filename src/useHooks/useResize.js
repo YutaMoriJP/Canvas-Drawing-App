@@ -1,5 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
+const useResize = () => {
+  const [resized, setResized] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setResized(prevResized => !prevResized);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return resized;
+};
+
+export default useResize;
+
+/*
 const useResize = (canvasRef, contextRef) => {
   useEffect(() => {
     console.log("useResize useEffect", canvasRef);
@@ -23,13 +36,12 @@ const useResize = (canvasRef, contextRef) => {
       inMemCtx.drawImage(canvasRef, 0, 0);
       canvasRef.width = 1000;
       ctx.drawImage(inMemCanvas, 0, 0);
-      */
+ 
     };
     window.addEventListener("resize", onresize);
     return () => {
       window.removeEventListener("resize", onresize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
-export default useResize;
+ */

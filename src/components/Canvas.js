@@ -8,11 +8,14 @@ const Canvas = ({ canvasRef }) => {
   //state for re-setting canvas
   const [open, toggle] = useOpen(false);
 
+  //resized state that tracks when window is resized
+  const resized = useResize();
+
   //state - onMouseDown = true & onMouseDown = false
   const [isDrawing, setIsDrawing] = useState(false);
   //refs
   const contextRef = useRef(null);
-
+  window.contextRef = contextRef;
   //event handlers
   const handleMouseMove = event => {
     //check if user is drawing or not
@@ -55,7 +58,7 @@ const Canvas = ({ canvasRef }) => {
     context.strokeStyle = "white";
     context.lineWidth = 2;
     contextRef.current = context;
-  }, [open, contextRef, canvasRef]);
+  }, [open, contextRef, canvasRef, resized]);
 
   //when the resize event is fired, at that point, contextRef is already initialized
   //although useResize's useEffect runs first
