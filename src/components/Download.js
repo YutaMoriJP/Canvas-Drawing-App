@@ -38,7 +38,13 @@ const Download = () => {
   };
   return (
     <div>
-      <Link href="#" download="canvas" ref={linkRef} onClick={handleClick}>
+      <Link
+        href="#"
+        download="canvas"
+        ref={linkRef}
+        onClick={handleClick}
+        ready={ready ? 1 : 0}
+      >
         {status}
       </Link>
       <Canvas

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Link = styled.a`
   font-size: 1.3rem;
@@ -14,6 +14,11 @@ const Link = styled.a`
   :hover {
     text-decoration-color: seagreen;
   }
+  ${props =>
+    props.ready &&
+    css`
+      color: seagreen;
+    `}
 `;
 
 export default Link;
