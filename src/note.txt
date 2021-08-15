@@ -7,3 +7,4 @@ nativeEvent.clientX vs event.clientX?
 
 add download feature and add storage option?
 - storage option - onMouseUp - toggle stored option (this is when useLocalStorage should be called, so the deps value)
+create a moving animation, look at arrow animation from codesandbox

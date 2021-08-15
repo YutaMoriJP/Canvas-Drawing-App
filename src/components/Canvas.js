@@ -63,16 +63,13 @@ const Canvas = ({ canvasRef }) => {
     //create copy of the currently drawn canvas
     const canvas = document.createElement("canvas"); //canvas copy
     const context = canvas.getContext("2d"); //context copy
-    canvas.width = window.innerWidth * 2; //resizes canvas
-    canvas.height = window.innerHeight * 2; //resizes canvas
-    context.drawImage(
-      canvasRef.current,
-      0,
-      0,
-      canvas.width / 2,
-      canvas.height / 2
-    ); //canvas copy gets the copy of canvasRef.current, and re-adjuts to the new window size
+    canvas.width = window.innerWidth; //resizes canvas
+    canvas.height = window.innerHeight; //resizes canvas
+    canvas.style.width = "100%";
+    canvas.style.height = "80%";
 
+    //copy context copies the current context
+    context.drawImage(canvasRef.current, 0, 0, canvas.width, canvas.height); //canvas copy gets the copy of canvasRef.current, and re-adjuts to the new window size
     //updates the dimension of the canvas after a re-size
     canvasRef.current.width = window.innerWidth; //reacts to resized window
     canvasRef.current.height = window.innerHeight; //reacts to resized window
@@ -83,7 +80,7 @@ const Canvas = ({ canvasRef }) => {
     //re-applies style
     contextRef.current.lineCap = "round";
     contextRef.current.strokeStyle = "white";
-    contextRef.current.lineWidth = 4;
+    contextRef.current.lineWidth = 2;
   }, [canvasRef]);
 
   //initialize canvas API after component has mounted and used to clear the canvas
@@ -98,7 +95,7 @@ const Canvas = ({ canvasRef }) => {
     context.scale(2, 2);
     context.lineCap = "round";
     context.strokeStyle = "white";
-    context.lineWidth = 4;
+    context.lineWidth = 2;
     contextRef.current = context;
   }, [contextRef, canvasRef, open]);
 
@@ -117,8 +114,6 @@ const Canvas = ({ canvasRef }) => {
   //but to have a clearn mental model, call it after the useEffect above
   useResize(canvasRef, contextRef);
 
-  console.log("renderCount", renderCount);
-  window.contextRef = contextRef;
   return (
     <>
       <ClearCanvas toggle={toggle} />

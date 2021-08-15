@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import CanvasStyled from "../styles/Canvas";
 
 const draw = (x, y, ctx) => {
   //ctx.arc(x, y, 10, 0, Math.PI * 2);
@@ -37,12 +36,12 @@ const CanvasMock = () => {
     canvasContext.current = context;
   }, []);
   return (
-    <CanvasStyled
+    <canvas
       ref={canvasRef}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-    ></CanvasStyled>
+    ></canvas>
   );
 };
 
